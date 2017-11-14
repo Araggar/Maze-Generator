@@ -26,7 +26,8 @@ def paint(maze, side, name):
 	im.save("{}.bmp".format(name), quality=100, subsampling=0, dpi=(100,100))
 
 
-def generate_simple():
+
+def maze_simple():
 	side = int(argv[2])
 	size = side*side
 	maze = [None]*size
@@ -91,12 +92,21 @@ def generate_simple():
 	#print_maze(maze, side)
 	paint(maze, side, argv[2])
 
+def load_maze(path):
+	with Image.open(path) as img:
+		widht, height = img.size
+		maze = [None]*(widht*height)
+		for i in range(widht):
+			for j in range(height):
+				maze[widht*i + j] = 1 if img.getpixel((i, j)) else 0
+	return maze
+
 		
 		
 
 if __name__ == "__main__" :
 	try:
-		locals()["generate_{}".format(argv[1])]()
+		locals()["maze_{}".format(argv[1])]()
 	except (KeyError, IndexError):
 		print("Usage: {} METHOD SIDE_SIZE\n Methods: \n\t simple")
 
