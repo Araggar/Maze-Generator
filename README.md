@@ -3,6 +3,10 @@ Maze generation/solving techniques
   
 Generation techniques:  
 	Random Traversal  
+  
+  
+To be implemented:  
+Generation techniques:  
 	Prim's algorithm*  
 	Wilson's algorithm*  
 	Randomized Depth-First*  
@@ -17,5 +21,4 @@ Solving Techniques
 	Trémaux's algorithm*  
 	Dead-end filling*  
 	Maze-routing algorithm*  
-
-*TODO  
+  
