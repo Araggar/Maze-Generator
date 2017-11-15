@@ -5,14 +5,14 @@
 - Random Traversal  
   
   
-######To be implemented:  
+###### To be implemented:  
 
-####Generation techniques:  
+#### Generation techniques:  
 - Prim's algorithm*  
 - Wilson's algorithm*  
 - Randomized Depth-First*  
   
-####Solving Techniques  
+#### Solving Techniques  
 - Depth-first algorithm  
 - Breadth-First search  
 - Depth-first search  
