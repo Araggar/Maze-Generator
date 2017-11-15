@@ -1,17 +1,18 @@
 # Maze-Generator
-Maze generation/solving techniques  
+## Maze generation/solving techniques  
   
-Generation techniques:  
+#### Generation techniques:  
 	Random Traversal  
   
   
-To be implemented:  
-Generation techniques:  
+######To be implemented:  
+  
+####Generation techniques:  
 	Prim's algorithm*  
 	Wilson's algorithm*  
 	Randomized Depth-First*  
   
-Solving Techniques  
+####Solving Techniques  
 	Depth-first algorithm*  
 	Breadth-First search*  
 	Depth-first search*  
