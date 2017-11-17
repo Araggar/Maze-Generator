@@ -4,6 +4,8 @@
 #### Generation techniques:  
 - Random Traversal  
   
+#### Solving Techniques  
+- Depth-first algorithm  
   
 ###### To be implemented:  
 
@@ -13,7 +15,6 @@
 - Randomized Depth-First*  
   
 #### Solving Techniques  
-- Depth-first algorithm  
 - Breadth-First search  
 - Depth-first search  
 - A-Star  
