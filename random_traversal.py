@@ -58,15 +58,15 @@ def generate_random_traversal(_side, prints=False, paint=False, name='Default'):
 				if slot is None:
 					maze[i]  = 0
 	#print_maze(maze, side)
-	print("Generating maze... 100%\r")
+	print("Generating maze... 100%")
 	end = [i+(side*(side-2)) for i, v in enumerate(maze[-side*2:-side]) if v == 1][-1]
 	maze[start-side] = 1
 	maze[end+side] = 1
 	if paint:
-		from tools import paint_maze
+		from maze_tools import paint_maze
 		paint_maze(maze, side, name)
 	if prints:
-		from tools import print_maze
+		from maze_tools import print_maze
 		print_maze(maze, side)
 
 	return maze
@@ -77,7 +77,7 @@ if __name__ == "__main__" :
 		os.makedirs("Examples")
 	except:
 		pass
-	generate_random_traversal(15, name=os.path.join('Examples','random_traversal'), paint=True)
+	generate_random_traversal(15, name=os.path.join('Examples','random_traversal.bmp'), paint=True)
 	from maze_tools import zoom_bitmaze
 	zoom_bitmaze(os.path.join('Examples','random_traversal.bmp'), 100)
 
