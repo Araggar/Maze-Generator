@@ -1,5 +1,5 @@
 from math import sqrt
-from maze_tools import load_maze, print_maze, check_bounds, paint_solution, zoom_bitmaze
+from maze_tools import load_maze, print_maze, check_bounds, paint_solution_manhattan, zoom_bitmaze
 from random_traversal import generate_random_traversal
 from timeit import default_timer
 from enum import Enum 
@@ -54,10 +54,10 @@ def depth_first_search(path):
 	#print(maze_path)
 	print("Maze path length : {}".format(len(maze_path)))
 	print("Elapsed time generating maze : {}".format(elapsed_time))
-	paint_solution(pathing, width, heigth, 5, path)
+	paint_solution_manhattan(pathing, width, heigth, 30, path, n_colors=len(maze_path))
+	zoom_bitmaze(path, 30)
 
 
 if __name__ == '__main__' :
-	generate_random_traversal(10, paint=True, name='search.bmp')
-	find_vertices('search.bmp')
+	generate_random_traversal(30, paint=True, name='search.bmp')
 	depth_first_search('search.bmp')
