@@ -1,6 +1,7 @@
 from math import sqrt
 from maze_tools import load_maze, print_maze, check_bounds, paint_solution_manhattan, zoom_bitmaze
 from random_traversal import generate_random_traversal
+from depth_first_gen import depth_first_gen
 from timeit import default_timer
 from enum import Enum 
 import copy
@@ -59,5 +60,16 @@ def depth_first_search(path):
 
 
 if __name__ == '__main__' :
-	generate_random_traversal(30, paint=True, name='search.bmp')
-	depth_first_search('search.bmp')
+	import os
+	try:
+		os.makedirs('depth_first_search_examples')
+	except:
+		pass
+	print('Random Traversal Maze')
+	traversal_path = os.path.join('depth_first_search_examples', 'search_random_traversal.bmp')
+	depth_first_gen_path = os.path.join('depth_first_search_examples', 'search_depth_first_gen.bmp')
+	generate_random_traversal(100, paint=True, name=traversal_path)
+	depth_first_search(traversal_path)
+	print('\nDepth First Maze')
+	depth_first_gen(100, paint=True, name=depth_first_gen_path)
+	depth_first_search(depth_first_gen_path)

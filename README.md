@@ -3,6 +3,7 @@
   
 #### Generation techniques:  
 - Random Traversal  
+- Randomized Depth-First
   
 #### Solving Techniques  
 - Depth-first algorithm  
@@ -12,7 +13,6 @@
 #### Generation techniques:  
 - Prim's algorithm*  
 - Wilson's algorithm*  
-- Randomized Depth-First*  
   
 #### Solving Techniques  
 - Breadth-First search  
