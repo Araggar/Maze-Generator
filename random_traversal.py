@@ -2,8 +2,10 @@ from sys import argv
 from random import randint, choice
 from maze_tools import template_maze, check_bounds
 import os
+from timeit import default_timer
 
 def generate_random_traversal(_side, prints=False, paint=False, name='Default'):
+	start_time = default_timer()
 	side = _side+2
 	size = side*side
 	maze = template_maze(side)
@@ -17,25 +19,25 @@ def generate_random_traversal(_side, prints=False, paint=False, name='Default'):
 			maze_temp = set()
 			a = choice(list(maze_next))
 			b = 0
-			# RIGHT SLOT
+			# LEFT SLOT
 			if check_bounds(a, -1, side) and a%side > (a-1)%side:
 				if maze[a - 1]:
 					b += 1
 				if maze[a - 1] is None :
 					maze_temp.add(a-1)
-			# LEFT SLOT
+			# RIGHT SLOT
 			if check_bounds(a, +1, side) and a%side < (a+1)%side:
 				if maze[a + 1]:
 					b += 1
 				if maze[a +  1] is None :
 					maze_temp.add(a+1)
-			# DOWN SLOT
+			# UPPER SLOT
 			if check_bounds(a, -side, side):
 				if maze[a - side]:
 					b += 1
 				if maze[a - side] is None :
 					maze_temp.add(a-side)
-			# UP SLOT
+			# DOWN SLOT
 			if check_bounds(a, +side, side):
 				if maze[a + side]:
 					b += 1
@@ -59,9 +61,14 @@ def generate_random_traversal(_side, prints=False, paint=False, name='Default'):
 					maze[i]  = 0
 	#print_maze(maze, side)
 	print("Generating maze... 100%")
+	
 	end = [i+(side*(side-2)) for i, v in enumerate(maze[-side*2:-side]) if v == 1][-1]
 	maze[start-side] = 1
 	maze[end+side] = 1
+	elapsed_time = default_timer() - start_time
+
+	print("Elapsed time generating maze : {}".format(elapsed_time))
+
 	if paint:
 		from maze_tools import paint_maze
 		paint_maze(maze, side, name)

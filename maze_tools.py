@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw
 from colour import Color
+from timeit import default_timer
 
 def template_maze(side):
 	maze = [None]*(side*side)
@@ -26,16 +27,21 @@ def print_maze(maze, side):
 
 def paint_maze(maze, side, name):
 	print("Painting...")
+	start_time = default_timer()
 	im = Image.new('RGB', (side, side), color=(0,0,0))
 	draw = ImageDraw.Draw(im)
 	for ind, color in enumerate(maze):
 		if color == 1:
 			draw.point((ind%side, ind//side), fill=(255,255,255))
-
-
 	im.save("{}".format(name), quality=100, subsampling=0)
+	elapsed_time = default_timer() - start_time
+	print("Elapsed time painting maze : {}".format(elapsed_time))
+
+def flood_maze():
+	pass
 
 def paint_solution(maze, width, heigth, block_size, path):
+	start_time = default_timer()
 	size = width*heigth
 	img = Image.new('RGB', (width*block_size, heigth*block_size), color=(0,0,0))
 	draw = ImageDraw.Draw(img)
@@ -78,6 +84,8 @@ def paint_solution(maze, width, heigth, block_size, path):
 
 	print("Painting solution... 100%")
 	img.save("{}_solution.bmp".format(path), quality=100, subsampling=0)
+	elapsed_time = default_timer() - start_time
+	print("Elapsed time painting solution : {}".format(elapsed_time))
 
 def load_maze(path):
 	with Image.open(path) as img:
@@ -92,6 +100,7 @@ def load_maze(path):
 	return maze, (width, heigth)
 
 def zoom_bitmaze(path, block_size):
+	start_time = default_timer()
 	progress = 0
 	maze, (width, heigth) = load_maze(path)
 	size = width*heigth
@@ -114,3 +123,5 @@ def zoom_bitmaze(path, block_size):
 
 	print("Zooming in... 100%")
 	img.save("{}_resized.bmp".format(path), quality=100, subsampling=0)
+	elapsed_time = default_timer() - start_time
+	print("Elapsed time zooming in : {}".format(elapsed_time))
