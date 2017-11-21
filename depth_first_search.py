@@ -54,7 +54,7 @@ def depth_first_search(path):
 	#print_maze(pathing, width)
 	#print(maze_path)
 	print("Maze path length : {}".format(len(maze_path)))
-	print("Elapsed time generating maze : {}".format(elapsed_time))
+	print("Elapsed time solving maze : {}".format(elapsed_time))
 	paint_solution_manhattan(pathing, width, heigth, 30, path, n_colors=len(maze_path))
 	zoom_bitmaze(path, 30)
 

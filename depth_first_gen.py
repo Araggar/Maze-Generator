@@ -13,15 +13,16 @@ def depth_first_gen(_side, prints=False, paint=False, name='Default'):
 	progress = 0;
 	start = side+1
 	maze_next = set([start])
+	maze_temp = set()
 
 	try:
 		while None in maze:
-			maze_temp = set()
 			if not maze_temp:
 				a = choice(list(maze_next))
 			else:
-				a = choice(maze_temp_n)
+				a = choice(list(maze_temp))
 
+			maze_temp = set()
 			b = 0
 			# LEFT SLOT
 			if check_bounds(a, -1, side) and a%side > (a-1)%side:
@@ -50,13 +51,20 @@ def depth_first_gen(_side, prints=False, paint=False, name='Default'):
 
 			maze[a] = 1 if b < 2 else 0
 
-			maze_next.remove(a)
+			from maze_tools import print_maze
 
 			if maze[a]:
 				maze_next = maze_next | maze_temp
+			else:
+				maze_temp = set()
+			
+			maze_next.remove(a)
+
 
 			progress += 100
 			print("Generating maze...",progress//size, "%\r", end='')
+
+			#print_maze(maze, side)
 
 			#input(">> Next\n")
 	except IndexError:
@@ -90,4 +98,4 @@ if __name__ == "__main__" :
 		pass
 	depth_first_gen(15, name=os.path.join('Examples','depth_first.bmp'), paint=True)
 	from maze_tools import zoom_bitmaze
-	zoom_bitmaze(os.path.join('Examples','depth_first.bmp'), 100)
+	zoom_bitmaze(os.path.join('Examples','depth_first.bmp'), 20)
