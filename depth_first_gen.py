@@ -49,6 +49,7 @@ def depth_first_gen(_side, prints=False, paint=False, name='Default'):
 				if maze[a + side] is None :
 					maze_temp.add(a+side)
 
+			#maze[a] = 1 if b < 2 else choice([0]*50 + [1]) #Chance of multiple Paths
 			maze[a] = 1 if b < 2 else 0
 
 			from maze_tools import print_maze
